@@ -1,6 +1,19 @@
 # SQL Utils
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.akhil7000/sql-utils)](https://central.sonatype.com/artifact/io.github.akhil7000/sql-utils)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Java Version](https://img.shields.io/badge/Java-11%2B-blue)](https://openjdk.java.net/)
+
 A Java utility library for SQL query manipulation and management.
+
+## Table of Contents
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Requirements](#requirements)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
@@ -88,6 +101,20 @@ String modifiedWhereQuery = QueryUtil.modifyWhereClause(query, conditions);
 - Java 11 or higher
 - JSQLParser library
 
+## Documentation
+
+For more detailed documentation and examples, please see our [Wiki](https://github.com/akhil7000/sql-utils/wiki).
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request or open an Issue.
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## Support
+
+If you encounter any problems or have any questions, please open an issue on our [GitHub Issues](https://github.com/akhil7000/sql-utils/issues) page.
+
 ## License
 
-Apache License, Version 2.0
+This project is licensed under the Apache License, Version 2.0 - see the [LICENSE](LICENSE) file for details.

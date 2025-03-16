@@ -30,14 +30,14 @@ A Java utility library for SQL query manipulation and management.
 <dependency>
     <groupId>io.github.akhil7000</groupId>
     <artifactId>sql-utils</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-implementation 'io.github.akhil7000:sql-utils:1.0.1'
+implementation 'io.github.akhil7000:sql-utils:1.0.2'
 ```
 
 ## Usage

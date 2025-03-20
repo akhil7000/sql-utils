@@ -138,7 +138,7 @@ public final class QueryUtil {
     }
     
     /**
-     * Format SQL query by removing unnecessary whitespace and newlines.
+     * Format SQL query by removing unnecessary whitespace, newlines, and trailing semicolons.
      *
      * @param sqlQuery The SQL query to format
      * @return The formatted SQL query
@@ -147,6 +147,8 @@ public final class QueryUtil {
         if (sqlQuery == null || sqlQuery.isEmpty()) return sqlQuery;
         
         String formatted = sqlQuery.replaceAll("\\s+", " ").trim();
+        // Remove trailing semicolon if present
+        formatted = formatted.replaceAll(";\\s*$", "");
         return formatted;
     }
     

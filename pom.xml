@@ -4,7 +4,7 @@
 
     <groupId>io.github.akhil7000</groupId>
     <artifactId>sql-utils</artifactId>
-    <version>1.0.2</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
     <name>SQL Utils</name>

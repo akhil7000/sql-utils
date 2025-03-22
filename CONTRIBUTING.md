@@ -94,9 +94,12 @@ mvn test
 
 ### Java Style Guide
 
-* Follow the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
-* Use 4 spaces for indentation
-* Prefer composition over inheritance
+  - Codebase linting is enforced using [Spotless](https://github.com/diffplug/spotless) with Maven integration.
+  - Command to check code formatting: `mvn clean install -DskipTests`
+  - Command to automatically apply code formatting: `mvn spotless:apply`
+
+- **Compilation Check**: 
+  - Command to check for compilation issues: `mvn compile`
 
 ### Documentation Style Guide
 

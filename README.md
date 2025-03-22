@@ -21,6 +21,9 @@ A Java utility library for SQL query manipulation and management.
 - Parse SQL queries with named placeholders
 - Substitute named parameters in SQL queries
 - Programmatically modify SQL queries (SELECT columns, WHERE clauses)
+- Format SQL queries for consistent styling
+- Handle special characters in parameters
+- Support for both string and numeric parameters
 
 ## Installation
 
@@ -78,6 +81,30 @@ params.put("id", 123);
 String userByIdQuery = QueryUtil.getQuery("get_user_by_id", params);
 ```
 
+### Parameter Substitution
+
+The library supports both string and numeric parameters, and handles special characters:
+
+```java
+// String parameters
+Map<String, Object> params = new HashMap<>();
+params.put("name", "John");
+params.put("status", "active");
+String query = "SELECT * FROM users WHERE name = :name AND status = :status";
+String result = QueryUtil.getQuery(query, params);
+
+// Special characters in strings
+params.put("name", "O'Connor");
+String queryWithSpecialChars = "SELECT * FROM users WHERE name = :name";
+String result = QueryUtil.getQuery(queryWithSpecialChars, params);
+
+// Numeric parameters
+params.put("id", 100);
+params.put("age", 25);
+String queryWithNumbers = "SELECT * FROM users WHERE id = :id AND age > :age";
+String result = QueryUtil.getQuery(queryWithNumbers, params);
+```
+
 ### Modifying SQL Queries Programmatically
 
 ```java
@@ -94,6 +121,32 @@ conditions.put("status", "active");
 conditions.put("department_id", 5);
 String modifiedWhereQuery = QueryUtil.modifyWhereClause(query, conditions);
 // Result: SELECT id, name, email FROM users WHERE status = 'active' AND department_id = 5
+
+// Handle empty or null inputs
+String query = "SELECT * FROM users";
+List<String> emptyColumns = Arrays.asList();
+String result = QueryUtil.modifySelectColumns(query, emptyColumns); // Returns original query
+```
+
+### Query Formatting
+
+The library provides utilities for formatting SQL queries:
+
+```java
+// Format a complex query
+String unformatted = "SELECT id,\n  name,\n  email\nFROM users\nWHERE\n  status = 'active'";
+String formatted = QueryUtil.formatSqlQuery(unformatted);
+// Result: SELECT id, name, email FROM users WHERE status = 'active'
+
+// Handle trailing semicolons
+String query = "SELECT * FROM users;";
+String formatted = QueryUtil.formatSqlQuery(query);
+// Result: SELECT * FROM users
+
+// Preserve semicolons in string literals
+String query = "INSERT INTO users (name) VALUES ('John; Doe');";
+String formatted = QueryUtil.formatSqlQuery(query);
+// Result: INSERT INTO users (name) VALUES ('John; Doe')
 ```
 
 ## Requirements

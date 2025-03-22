@@ -5,6 +5,14 @@ All notable changes to SQL Utils will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-03-22
+
+### Added
+- Added where and select enahancements
+- Added spotless code linter checks
+
+[1.2.0]: https://github.com/akhil7000/sql-utils/compare/v1.1.1...v1.2.0
+
 ## [1.1.1] - 2025-03-21
 
 ### Added

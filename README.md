@@ -108,24 +108,38 @@ String result = QueryUtil.getQuery(queryWithNumbers, params);
 ### Modifying SQL Queries Programmatically
 
 ```java
-// Modify the columns in a SELECT query
+// First, set up your SQL file with named queries
+QueryUtil.setFilePath("queries.sql");
+
+// Modify columns using a query name from the file
+String modifiedQuery = QueryUtil.modifySelectColumns("get_users", 
+    Arrays.asList("id", "username", "last_login_date"));
+// Result: SELECT id, username, last_login_date FROM users WHERE status = :status ORDER BY created_at DESC
+
+// Modify columns using a direct query string
 String originalQuery = "SELECT id, name, email FROM users WHERE status = 'active'";
 List<String> newColumns = Arrays.asList("id", "username", "last_login_date");
-String modifiedQuery = QueryUtil.modifySelectColumns(originalQuery, newColumns);
+String modifiedQuery = QueryUtil.modifySelectColumnsWithQuery(originalQuery, newColumns);
 // Result: SELECT id, username, last_login_date FROM users WHERE status = 'active'
 
-// Modify the WHERE clause in a SELECT query
-String query = "SELECT id, name, email FROM users";
+// Modify WHERE clause using a query name from the file
 Map<String, Object> conditions = new HashMap<>();
 conditions.put("status", "active");
 conditions.put("department_id", 5);
-String modifiedWhereQuery = QueryUtil.modifyWhereClause(query, conditions);
+String modifiedWhereQuery = QueryUtil.modifyWhereClause("get_users", conditions);
+// Result: SELECT id, username, email, created_at FROM users 
+//        WHERE status = 'active' AND department_id = 5 
+//        ORDER BY created_at DESC
+
+// Modify WHERE clause using a direct query string
+String query = "SELECT id, name, email FROM users";
+String modifiedWhereQuery = QueryUtil.modifyWhereClauseWithQuery(query, conditions);
 // Result: SELECT id, name, email FROM users WHERE status = 'active' AND department_id = 5
 
 // Handle empty or null inputs
 String query = "SELECT * FROM users";
 List<String> emptyColumns = Arrays.asList();
-String result = QueryUtil.modifySelectColumns(query, emptyColumns); // Returns original query
+String result = QueryUtil.modifySelectColumnsWithQuery(query, emptyColumns); // Returns original query
 ```
 
 ### Query Formatting
